@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html class="no-js consumer" lang="en">
+<head>
+
+ 
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <meta content="Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+          name="description">
+    <title>
+        USC Campus Cruiser Order
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="AdminLTE.min.css" />
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+        .direct-chat-text {
+            max-width:90%
+             }
+        .direct-chat-timestamp {
+            color:black
+        }
+        .direct-chat-text:after, .direct-chat-text:before {
+        border-right-color: #f39c12;
+        }
+       </style>
+</head>
+<body class="" style="background:white" >
+    <div id="box" class="box box-danger direct-chat direct-chat-danger" style="background:#ddd" >
+        <div class="box-header with-border" style="background:white">
+            <h3 class="box-title">USC Campus Cruiser</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body" id="msgBox" style="overflow-y:auto">
+            <!-- Conversations are loaded here -->
+            <div class="direct-chat-messages" id="content" style="overflow:hidden;height:auto">
+
+            </div><!--/.direct-chat-messages-->
+            <!-- Contacts are loaded here -->
+           
+        </div><!-- /.box-body -->
+        <div class="box-footer" id="inputBox" style="bottom:0px;position:absolute;background:white;">
+            <form action="#" method="post">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button" id="voiceBtn" style="height:34px" class="btn btn-danger btn-flat"><i class="fa fa-fw fa-microphone"></i></button>
+                    </span>
+                    <input type="text" id="answerTxt" name="message" placeholder="Type Message ..." class="form-control">
+                    <span class="input-group-btn">
+                        <button type="button" id="sendBtn" class="btn btn-danger btn-flat">Send</button>
+                    </span>
+                </div>
+            </form>
+        </div><!-- /.box-footer-->
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="dict.js"></script>
+    <script src="entityExtract.js"></script>
+    <script src="dialogue.js"></script>
+    <script>
+        
+        $(document).ready(function () {
+            $('#box').height(window.innerHeight);
+            $('.box-body').height(window.innerHeight - 100);
+            ask("Hello trojans! " + scripts.destination[0]);
+            $('#voiceBtn').click(function (e) {
+                $('#answerTxt').val('');
+                recognition.start();
+            });
+            $('#sendBtn').click(function (e) {
+
+                var str = $('#answerTxt').val();
+                if (str != '') {
+                    $('#answerTxt').val('');
+                    answer(str);
+                }
+
+            });
+          //  $('body').remove($('div:last'));
+        });
+       
+    </script>
+</body>
+</html>
