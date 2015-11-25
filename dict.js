@@ -81,6 +81,26 @@ var street_name = [["West 20 Street", "20th Street", "20 Street", "West 20th Str
                    ["Hellman", "Hellman Way"], 
                    ["Trousdale", "Trousdale Pkwy"]];
 
+var street_key_word = [["Adams", "West Adams Boulevard"], ["Vermont", "South Vermont Avenue"], ["Menlo", "Menlo Avenue"], 
+					   ["Ellendale", "Ellendale Place"], ["Magnolia", "Magnolia Avenue"], ["Orchard", "Orchard Avenue"], ["Monmouth", "Monmouth Avenue"], 
+					   ["Hoover", "Hoover Street"], ["McClintock", "McClintock Avenue"], ["Jefferson", "West Jefferson Boulevard"], 
+					   ["Exposition", "Exposition Boulevard"],
+					   ["RayMond", "RayMond Avenue"], ["Budlong", "South Budlong Avenue"], ["Walton", "Walton Avenue"], ["Catalina", "South Catalina Street"], 
+					   ["Figueroa", "South Figueroa Street"], ["Martin Luther King Jr", "West Martin Luther King Jr Boulevard"], ["Flower", "South Flower Street"], 
+					   ["Hope", "South Hope Street"], ["Grand", "South Grand Avenue"],["Hill", "South Hill Street"], ["Toberman", "Toberman Street"],
+					   ["Portland", "Portland Street"], ["Oak", "Oak Street"], ["Washington", "West Washington Boulevard"], ["Norwood", "Norwood Street"], 
+					   ["Park Grove", "Park Grove Avenue"], 
+					   ["Bonsallo", "Bonsallo Avenue"], ["Estrella", "Estrella Avenue"], ["Scarff", "Scarff Street"], ["Lovelace", "Lovelace Avenue"],
+					   ["Olive", "Oak Street"],["Severance", "Severance Street"],
+					   ["Royal",  "Royal Street"], ["Shrine", "Shrine Place"], ["Hill", "South Hill Street"], ["BroadWay","South BroadWay"], ["Abner", "Abner Street"], 
+					   ["Eastlake", "Eastlake Avenue"], ["San Pablo", "San Pablo Street"], ["Norfolk", "Norfolk Street"], ["Mission", "North Mission Rd"], 
+					   ["Marengo", "Marengo Street"], 
+					   ["state", "North state Street"], ["CornWell", "CornWell Street"],
+					   ["Soto", "North Soto Street"], ["San Pablo", "San Pablo Street"], ["Norfolk", "Norfolk Street"], ["Zonal", "Zonal Avenue"], 
+					   ["Cornwell", "Cornwell Street"], ["Cummings", "North Cummings Street"], ["Biggy", "Biggy Street"], ["Playground", "Playground Street"], 
+					   ["Alcazar", "Alcazar Street"], ["Alhambra", "Alhambra Avenue"], ["Sichel", "Sichel Street"], ["Childs", "Childs Way"],
+					   ["Downey", "Downey Way"], ["Watt", "Watt Way"], ["McClintock", "McClintock Avenue"], ["Hellman", "Hellman Way"], ["Trousdale", "Trousdale Pkwy"]];
+
 var USC_building = [
 		["TCC", "PCC", "tutor center", "Tutor Campus Center"],
 		["ASC","a SC”,”a taxi”,”Annenberg School", "Annenberg School for Communication and Journalism"], 
