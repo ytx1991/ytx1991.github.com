@@ -51,7 +51,7 @@ scripts =
     {
     destination: ["Where are you want to go?",
                   "Your destination is {location}, right?",
-                   "We cannot locate your destination, please say it again."],
+                   "We cannot locate your destination or it isn't in service area, please try again."],
     source: ["Where are you now?","Your location is {location}, right?","Excuse me, where are you now?"],
     numOfPeople:['How many passengers?'],
 };

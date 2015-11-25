@@ -56,7 +56,8 @@ function isConfirm(str){
 
 //Check if match any of the street names
 function matchStreetName(str){
-    for (i=0; i<street_name.length; i++){
+    for (i = 0; i < street_name.length; i++) {
+       
         if (str.match(new RegExp(street_name[i], 'i'))){    //match street_name
             var fullAddr = str.match(new RegExp('[0-9]+\\s' + street_name[i], 'i'));    //match if there is number before street name            
             if(fullAddr)
@@ -72,13 +73,15 @@ function matchStreetName(str){
     
 //Check if match any of the street keywords    
 function matchStreetKeyword(str){
-    for (i=0; i<street_key_word.length; i++){
-        if (str.match(new RegExp(street_key_word[i][0], 'i'))){    //match street_name_keyword
-            var fullAddr = str.match(new RegExp('([0-9]+)\\s' + street_key_word[i][0], 'i'));    //match if there is number before street name
-            if(fullAddr)
-                return [0, fullAddr];
-            else
-                return [1, street_key_word[i][1]];
+    for (i = 0; i < street_key_word.length; i++) {
+        for (var j = 0; j < street_key_word[i].length; j++) {
+            if (str.match(new RegExp(street_key_word[i][j], 'i'))) {    //match street_name_keyword
+                var fullAddr = str.match(new RegExp('([0-9]+)\\s' + street_key_word[i][j], 'i'));    //match if there is number before street name
+                if (fullAddr)
+                    return [0, fullAddr];
+                else
+                    return [1, street_key_word[i][street_key_word[i].length-1]];
+            }
         }
         
     }
@@ -87,18 +90,22 @@ function matchStreetKeyword(str){
 
 //Check if match any of USC buildings (full name or abbreviation) 
 function matchBuilding(str){
-    for (i=0; i<USC_building.length; i++){
-        if (str.match(new RegExp('\\b'+USC_building[i][0]+'\\b', 'i')) || str.match(new RegExp(USC_building[i][1], 'i')))    
-            return [0, USC_building[i][1]];       
+    for (i = 0; i < USC_building.length; i++) {
+        for (var j = 0; j < USC_building[i].length; j++) {
+            if (str.match(new RegExp('\\b' + USC_building[i][j] + '\\b', 'i')) )
+                return [0, USC_building[i][USC_building[i].length-1]];
+        }
     }
     return [100, "no match"];
 }
 
 //Check if match any of USC residentials (full name or abbreviation) 
 function matchResidential(str){
-    for (i=0; i<USC_residential.length; i++){
-        if (str.match(new RegExp('\\b'+USC_residential[i][0]+'\\b', 'i')) || str.match(new RegExp(USC_residential[i][1], 'i')))    
-            return [0, USC_residential[i][2]];       
+    for (i = 0; i < USC_residential.length; i++) {
+        for (var j = 0; j < USC_residential[i].length; j++) {
+            if (str.match(new RegExp('\\b' + USC_residential[i][j] + '\\b', 'i')) )
+                return [0, USC_residential[i][USC_residential[i].length-1]];
+        }
     }
     return [100, "no match"];
 }
