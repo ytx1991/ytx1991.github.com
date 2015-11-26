@@ -5,23 +5,26 @@ var maxEditDistance = 0.5;  //maximun normalized editDistance we accept
 //Returns [100, "no match"] if no match
 function getAddr(str) {
     var addr = matchStreet(str);
-    if (addr[0] == 0 || addr[0] == 1)
+    var hold = [100, 'no match', ''];
+    if (addr[0] == 0)
         return addr;
+    if (addr[0] == 1)
+        hold = addr;
 
     addr = matchBuilding(str);
-    if (addr[0] == 0 || addr[0] == 1)
+    if (addr[0] == 0)
         return addr;
 
     addr = vagueMatch(str);
-    if (addr[0] == 0 || addr[0] == 1)
+    if (addr[0] == 0)
         return addr;
-
-    return addr;
+    else
+        return hold;
 }
 
 //Returns number of people
 function getPeople(str) {
-    matches = str.match(/[0-9]+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty/ig);
+    var matches = str.match(/[0-9]+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty/ig);
     if (matches)
         var count = matches.length; //number of numbers we can extract
     else
@@ -53,48 +56,42 @@ function isConfirm(str) {
 
 //Check if match any of the street names
 function matchStreet(str) {
+    var result = [100, "no match", ''];
     for (i = 0; i < street_name.length; i++) {
         for (j = 0; j < street_name[i].length; j++) {
-            if (str.match(new RegExp(street_name[i][j], 'i'))) {    //match street_name
-                var streetNum = str.match(new RegExp('([0-9]+\\s)' + street_name[i][j], 'i'));    //match if there is number before street name 
+            var match = str.match(new RegExp(street_name[i][j], 'i'));
+            if (match) {    //match street_name
+                var streetNum = str.match(new RegExp('([0-9]+\\s)' + match, 'i'));    //match if there is number before street name 
                 if (streetNum)
-                    return [0, streetNum[1] + street_name[i][street_name[i].length - 1]];
+                    result = [0, streetNum[1] + street_name[i][street_name[i].length - 1], ''];
                 else
-                    return [1, street_name[i][street_name[i].length - 1]];
+                    result = [1, street_name[i][street_name[i].length - 1], ''];
             }
         }
     }
-    return [100, "no match"];
+    return result;
 }
 
 //Check if match any of USC buildings (full name or variations) 
 function matchBuilding(str) {
+    var result = [100, "no match", 'USC']
     for (i = 0; i < USC_building.length; i++) {
         for (j = 0; j < USC_building[i].length; j++) {
             if (str.match(new RegExp('\\b' + USC_building[i][j] + '\\b', 'i')))
-                return [0, USC_building[i][USC_building[i].length - 1]];
+                result = [0, USC_building[i][USC_building[i].length - 1], 'USC'];
         }
     }
-    return [100, "no match"];
+    return result;
 }
 
 //match an address keyword followed by 'go to', etc. if there is number at the begining of the match, return [match number], otherwise, return [match, '']. If no match, return [str, '']
 function extractKeyword(str) {
-    var matches = str.split(/go to |going to |at |in the |is |are /gi);
-    if (matches) {
-        var numberMatch = matches[matches.length - 1].match(/([0-9]+\s)(.+)/i)  //if there is number between the match, assume it's a street number
-        if (numberMatch)
-            return [numberMatch[2], numberMatch[1]];
-        else
-            return [matches[matches.length - 1], '']
-    }
-    else {
-        var numberMatch = str.match(/([0-9]+\s)(.+)/i)  //if there is number between the match, assume it's a street number
-        if (numberMatch)
-            return [numberMatch[2], numberMatch[1]];
-        else
-            return [str, '']
-    }
+    var split = str.split(/go to |going to |at |in the |is |are /gi);
+    var numberMatch = split[split.length - 1].match(/([0-9]+\s)(.+)/i)  //if there is number between the match, assume it's a street number
+    if (numberMatch)
+        return [numberMatch[2], numberMatch[1]];
+    else
+        return [split[split.length - 1], '']
 }
 
 //if the edit distance of the address extracted from the str and any names in the dictionary is less than certain amount, then return the address. otherwise, return no match.
@@ -109,7 +106,7 @@ function vagueMatch(str) {
             dist = getEditDistance(kw.toLowerCase(), street_name[i][j].toLowerCase());
             if (dist < minDist) {
                 minDist = dist;
-                matchStr = street_name[i][j];
+                matchStr = street_name[i][street_name[i].length - 1];
                 matchType = 'street';
             }
         }
@@ -119,24 +116,23 @@ function vagueMatch(str) {
             dist = getEditDistance(kw.toLowerCase(), USC_building[i][j].toLowerCase());
             if (dist < minDist) {
                 minDist = dist;
-                matchStr = USC_building[i][j];
+                matchStr = USC_building[i][USC_building[i].length - 1];
                 matchType = 'building';
             }
         }
     }
-
     if (minDist / kw.length < maxEditDistance) {
         if (matchType == 'street') {
             if (streetNum == '')
-                return [1, matchStr];
+                return [1, matchStr, ''];
             else
-                return [0, streetNum + matchStr];
+                return [0, streetNum + matchStr, ''];
         }
         else
-            return [0, matchStr];
+            return [0, matchStr, 'USC'];
     }
     else
-        return [100, "no match"];
+        return [100, "no match", ''];
 }
 
 /*

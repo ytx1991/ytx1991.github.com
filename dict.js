@@ -83,7 +83,7 @@ var street_name = [["West 20 Street", "20th Street", "20 Street", "West 20th Str
 
 var USC_building = [
 		["TCC", "PCC", "tutor center", "Tutor Campus Center"],
-		["ASC", "a SC”,”a taxi”,”Annenberg School", "Annenberg School for Communication and Journalism"],
+		["ASC", "a SC","a taxi","Annenberg School", "Annenberg School for Communication and Journalism"],
 		["DRC", "School of Dramatic Arts"],
 		["NCT", "NCP", "Eileen Norris Cinema Theatre"],
 		["VKC", "VTC", "BTC", "vacated", "vacation", "vacancy", "Von KleinSmid Center"],
