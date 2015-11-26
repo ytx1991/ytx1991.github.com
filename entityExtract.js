@@ -124,8 +124,7 @@ function vagueMatch(str) {
             }
         }
     }
-    alert(kw);
-    alert(minDist / kw.length);
+
     if (minDist / kw.length < maxEditDistance) {
         if (matchType == 'street') {
             if (streetNum == '')
