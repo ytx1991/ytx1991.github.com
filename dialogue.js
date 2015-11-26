@@ -194,7 +194,7 @@ function dialogueManage(order, words) {
             switch (field) {
                 case 'destination':
                     var addr = [0, order.source.value];
-                    return locationStatus('source', addr);
+                    return locationStatus('destination', addr);
                     break;
                 case 'source':
                     var addr = getAddr(words);
