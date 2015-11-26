@@ -87,7 +87,7 @@ var USC_building = [
 		["DRC", "School of Dramatic Arts"],
 		["NCT", "NCP", "Eileen Norris Cinema Theatre"],
 		["VKC", "VTC", "BTC", "vacated", "vacation", "vacancy", "Von KleinSmid Center"],
-		["DML", "mao", "Edward L Doheny Memorial Library"],
+		["DML", "mao", "Doheny Library", "Edward L Doheny Memorial Library"],
 		["GER", "gr", "Andrus Gerontology Center"],
 		["AHF", "a half", "Allan Hancock Foundation"],
 		["LAW", "law school", "Gould School of Law"],
