@@ -85,7 +85,7 @@ function locationStatus(field,addr){
         order[field].status = 1;
         order[field].value = addr[1];
 
-        return scripts[field][order[field].status].replace("{location}", order[field].value) + '|<iframe width="100%" height="300" frameborder="0" style="border:0;" src="https://www.google.com/maps/embed/v1/search?q=' + String(addr[1]).replace(' ', '+') + ',' + addr[2] + '+Los+Angeles,+CA,+United+States&key=AIzaSyAOwwmWHbANks4G77DpHp3h_5Ag0dxds-Y" allowfullscreen></iframe>';
+        return scripts[field][order[field].status].replace("{location}", order[field].value) + '|<iframe width="100%" height="300" frameborder="0" style="border:0;" src="https://www.google.com/maps/embed/v1/search?q=' + String(addr[1]).replace(' ', '+') + ',+Los+Angeles,+CA,+United+States&key=AIzaSyAOwwmWHbANks4G77DpHp3h_5Ag0dxds-Y" allowfullscreen></iframe>';
 
     } else {
         order[field].status = 0;
