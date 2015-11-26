@@ -215,7 +215,7 @@ function dialogueManage(order, words) {
 function whichField(words) {
     if (words.match(new RegExp('(want to go|destination)', 'i')))
         return 'destination';
-    if (words.match(new RegExp('(in\\s\\S)*now|location|origin)', 'i')))
+    if (words.match(new RegExp('(\\sin\\s|location|origin)', 'i')))
         return 'source';
     if (words.match(new RegExp('(people|men|man|woman|women|guys)', 'i')))
         return 'numOfPeople';
