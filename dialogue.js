@@ -92,6 +92,17 @@ function locationStatus(field,addr){
         return scripts[field][2];
     }
 }
+function checkData() {
+    if (order.destination.status == 3 && order.source.status == 3 && order.numOfPeople.status == 3) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function reservation() {
+    return "Here is your reservation.\n Pick up at " + order.source.value + ".\nDrop off at " + order.destination.value + ".\n Number of passengers is " + order.numOfPeople.value + '.\n Please confirm.|' +
+                            '<iframe width="100%" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?origin=' + String(order.source.value).replace(' ', '+') + ',+Los+Angeles,+CA,+United+States&destination=' + String(order.destination.value).replace(' ', '+') + ',+Los+Angeles,+CA,+United+States&key=AIzaSyAOwwmWHbANks4G77DpHp3h_5Ag0dxds-Y" allowfullscreen></iframe>';
+}
 function dirtyWords(words) {
     if (words.match(new RegExp('\\*|hell|damn', 'i')))
         return true;
@@ -113,6 +124,9 @@ function dialogueManage(order, words) {
             case 1:
                 if (isConfirm(words)) {
                     order.destination.status = 3;
+                    if (checkData()) {
+                        return reservation();
+                    }
                     if (order.source.status == 0)
                         return scripts.source[0];
                     else {
@@ -137,6 +151,9 @@ function dialogueManage(order, words) {
                 if (isConfirm(words)) {
                     if (order.source.value != order.destination.value) {
                         order.source.status = 3;
+                        if (checkData()) {
+                            return reservation();
+                        }
                         return scripts.numOfPeople[0];
                     } else {
                         return "Can you walk to there?";
@@ -159,8 +176,8 @@ function dialogueManage(order, words) {
             case 1:
                 if (isConfirm(words)) {
                     order.numOfPeople.status = 3;
-                    return "Here is your reservation.\n Pick up at " + order.source.value + ".\nDrop off at " + order.destination.value + ".\n Number of passengers is " + order.numOfPeople.value + '.\n Please confirm.|'+
-                        '<iframe width="100%" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?origin=' + String(order.source.value).replace(' ', '+') + ',+Los+Angeles,+CA,+United+States&destination=' + String(order.destination.value).replace(' ', '+') + ',+Los+Angeles,+CA,+United+States&key=AIzaSyAOwwmWHbANks4G77DpHp3h_5Ag0dxds-Y" allowfullscreen></iframe>';
+                        return reservation();
+                    
                 } else {
                     var num = getPeople(words);
                     order.numOfPeople.value = num;
