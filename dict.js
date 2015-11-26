@@ -104,7 +104,7 @@ var USC_building = [
 		["PED", "be easy", "Physical Education Building"],
 		["SAL", "SL", "scal", "Salvatori Computer Science Center"],
 		["KOH", "college", "King Hall Computer Center"],
-		["WPH", "mph", "wth", "Waite Phillips Hall Computer Center"],
+		["WPH", "mph", "wth", "Waite Phillips Hall"],
 		["BCI", "busy I", "PCI", "Brain and Creativity Institute"],
 		["ESH", "ESS", "Engemann Student Health Center"],
 		["SCI", "sei", "School of Cinematic Arts"],
