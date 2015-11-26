@@ -131,7 +131,7 @@ function dialogueManage(order, words) {
                         return scripts.source[0];
                     else {
                         var addr = [0, order.source.value];
-                        return "Do you want us pick up you at current locatin? "+locationStatus('source', addr);
+                        return "Do you want us pick up you at current location? "+locationStatus('source', addr);
                     }
                         
                 } else {
