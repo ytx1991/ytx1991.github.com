@@ -49,7 +49,7 @@ function googleMapPlugin(field) {
 //scripts of AI
 scripts =
     {
-    destination: ["Where are you want to go?",
+    destination: ["Where do you want to go?",
                   "Your destination is {location}, right?",
                    "We cannot locate your destination or it isn't in service area, please try again."],
     source: ["Where are you now?","Your location is {location}, right?","Excuse me, where are you now?"],
@@ -131,7 +131,7 @@ function dialogueManage(order, words) {
                         return scripts.source[0];
                     else {
                         var addr = [0, order.source.value];
-                        return locationStatus('source', addr);
+                        return "Do you want us pick up you at current locatin? "+locationStatus('source', addr);
                     }
                         
                 } else {
