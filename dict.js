@@ -124,6 +124,7 @@ var USC_building = [
 		["KAP", "Kaprielian Hall"],
 		["SGM", "Seeley G. Mudd Building"],
 		["GFS", "Grace Ford Salvatori Hall"],
+		["RGL", "Lewis Hall"],
 		["ANH", "ANS", "Annenberg House", "711 West 27th Street Los Angeles, CA 90007"],
 		["BAA", "be a egg", "bae", "Bel-Air Apartments", "1124 West 29th Street Los Angeles, CA 90007"],
 		["CAR", "Cardinal Gardens", "3131 McClintock Avenue Los Angeles, CA 90007"],
