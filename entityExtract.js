@@ -24,6 +24,7 @@ function getAddr(str) {
 
 //Returns number of people
 function getPeople(str) {
+    var number = 1;
     var matches = str.match(/[0-9]+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty/ig);
     if (matches)
         var count = matches.length; //number of numbers we can extract
