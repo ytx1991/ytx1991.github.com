@@ -100,7 +100,7 @@ var USC_building = [
 		["GEC", "Galen Center"],
 		["HER", "HDR", "the ER", "Heritage Hall"],
 		["JMC", "John McKay Center"],
-		["LRC", "Lyon Center"],
+		["LRC", "gym","lion center","Lyon Center"],
 		["PED", "be easy", "Physical Education Building"],
 		["SAL", "SL", "scal", "Salvatori Computer Science Center"],
 		["KOH", "college", "King Hall Computer Center"],
